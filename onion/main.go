@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/maxmellon/onion"
+	"github.com/maxmellon/onion/styles"
 )
 
 func main() {
@@ -18,6 +19,9 @@ Usage:
 
 	data := onion.ReadFile(os.Args[1])
 	parsedData := onion.Parse(data)
-	fmt.Println(parsedData)
+	lintedData := onion.Linting(parsedData)
+	// fmt.Println(parsedData)
+	// fmt.Println(lintedData)
+	styles.SimplePrintResult(lintedData)
 	return
 }
