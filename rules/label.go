@@ -26,7 +26,7 @@ func LabelStyle(m types.Tml) types.Status {
 
 	rep := regexp.MustCompile(`○ (\S+) \[(\d+)\]`)
 	strList := rep.FindAllString(m.Statement, 1)
-	for i, v := range strList {
+	for _, v := range strList {
 		if !contains(labels, v) {
 			return types.Status{
 				Line:     m.Line,
