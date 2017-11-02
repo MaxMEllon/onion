@@ -2,11 +2,21 @@ package styles
 
 import (
 	"fmt"
+	"github.com/fatih/color"
 	"github.com/maxmellon/onion/types"
 )
 
-func SimplePrintResult(r []types.Status) {
+func SimplePrintResult(filename string, r []types.Status) {
+	color.Yellow("== %s ==\n", filename)
 	for _, v := range r {
-		fmt.Printf("%s: %3d:%3d: [%s]: %s\n", v.Code, v.Line, v.Column, v.RuleName, v.Message)
+		if v.Code == types.C {
+			y := color.New(color.FgYellow, color.Bold)
+			y.Printf("%s", v.Code)
+		}
+		if v.Code == types.W {
+			y := color.New(color.FgHiBlue, color.Bold)
+			y.Printf("%s", v.Code)
+		}
+		fmt.Printf(": %3d:%3d: [%s]: %s\n", v.Line, v.Column, v.RuleName, v.Message)
 	}
 }

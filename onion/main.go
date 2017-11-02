@@ -17,11 +17,11 @@ Usage:
 `)
 	}
 
-	data := onion.ReadFile(os.Args[1])
-	parsedData := onion.Parse(data)
-	lintedData := onion.Linting(parsedData)
-	// fmt.Println(parsedData)
-	// fmt.Println(lintedData)
-	styles.SimplePrintResult(lintedData)
+	for _, filename := range os.Args[1:] {
+		data := onion.ReadFile(filename)
+		parsedData := onion.Parse(data)
+		lintedData := onion.Linting(parsedData)
+		styles.SimplePrintResult(filename, lintedData)
+	}
 	return
 }

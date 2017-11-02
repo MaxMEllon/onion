@@ -13,7 +13,12 @@ func Linting(tml []types.Tml) []types.Status {
 			result = append(result, r)
 		}
 
-		r = rules.LessThan80Characters(v)
+		r = rules.LessThan72Characters(v)
+		if r.Code != types.S {
+			result = append(result, r)
+		}
+
+		r = rules.LabelStyle(v)
 		if r.Code != types.S {
 			result = append(result, r)
 		}
