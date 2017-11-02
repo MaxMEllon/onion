@@ -30,7 +30,7 @@ func LabelStyle(m types.Tml) types.Status {
 		if !contains(labels, v) {
 			return types.Status{
 				Line:     m.Line,
-				Column:   i + 1,
+				Column:   3,
 				Message:  "[新規], [継続], [完了] のいずれかであるべき",
 				RuleName: "LabelStyle",
 				Code:     types.C,
