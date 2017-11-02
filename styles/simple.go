@@ -7,6 +7,9 @@ import (
 )
 
 func SimplePrintResult(filename string, r []types.Status) {
+	if len(r) == 0 {
+		return
+	}
 	color.Yellow("== %s ==\n", filename)
 	for _, v := range r {
 		if v.Code == types.C {

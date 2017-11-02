@@ -22,16 +22,16 @@ func PunctuationMark(m types.Tml) types.Status {
 	return types.Status{Code: types.S}
 }
 
-const MAX_LENGTH_OF_LINE = 72
+const MAX_LENGTH_OF_LINE = 75
 
-func LessThan72Characters(m types.Tml) types.Status {
+func LessThan75Characters(m types.Tml) types.Status {
 	for i, _ := range m.Statement {
 		if i >= MAX_LENGTH_OF_LINE {
 			return types.Status{
 				Line:     m.Line,
 				Column:   i + 1,
-				Message:  "1行は72文字以内にするべき",
-				RuleName: "LessThan72Characters",
+				Message:  "1行は75文字以内にするべき",
+				RuleName: "LessThan75Characters",
 				Code:     types.W,
 			}
 		}

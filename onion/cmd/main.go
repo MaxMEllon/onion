@@ -25,7 +25,8 @@ Usage:
 			data := onion.ReadFile(filename)
 			parsedData := onion.Parse(data)
 			lintedData := onion.Linting(parsedData)
-			styles.QuickFixPrintResult(filename, lintedData)
+			// styles.QuickFixPrintResult(filename, lintedData)
+			styles.SimplePrintResult(filename, lintedData)
 			defer wg.Done()
 		}(filename)
 	}
