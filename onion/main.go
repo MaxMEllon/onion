@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sync"
 
 	"github.com/maxmellon/onion"
 	"github.com/maxmellon/onion/styles"
@@ -17,12 +18,18 @@ Usage:
 `)
 	}
 
+	var wg sync.WaitGroup
 	for _, filename := range os.Args[1:] {
-		data := onion.ReadFile(filename)
-		parsedData := onion.Parse(data)
-		lintedData := onion.Linting(parsedData)
-		// styles.SimplePrintResult(filename, lintedData)
-		styles.QuickFixPrintResult(filename, lintedData)
+		wg.Add(1)
+		go func(filename string) {
+			data := onion.ReadFile(filename)
+			parsedData := onion.Parse(data)
+			lintedData := onion.Linting(parsedData)
+			styles.QuickFixPrintResult(filename, lintedData)
+			defer wg.Done()
+		}(filename)
 	}
+
+	wg.Wait()
 	return
 }
