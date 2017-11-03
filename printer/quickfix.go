@@ -1,4 +1,4 @@
-package styles
+package printer
 
 import (
 	"fmt"

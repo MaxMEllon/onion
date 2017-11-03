@@ -6,7 +6,7 @@ import (
 	"sync"
 
 	"github.com/maxmellon/onion"
-	"github.com/maxmellon/onion/styles"
+	"github.com/maxmellon/onion/printer"
 )
 
 func main() {
@@ -25,8 +25,7 @@ Usage:
 			data := onion.ReadFile(filename)
 			parsedData := onion.Parse(data)
 			lintedData := onion.Linting(parsedData)
-			// styles.QuickFixPrintResult(filename, lintedData)
-			styles.SimplePrintResult(filename, lintedData)
+			printer.SimplePrintResult(filename, lintedData)
 			defer wg.Done()
 		}(filename)
 	}

@@ -1,7 +1,8 @@
-package styles
+package printer
 
 import (
 	"fmt"
+
 	"github.com/fatih/color"
 	"github.com/maxmellon/onion/types"
 )
