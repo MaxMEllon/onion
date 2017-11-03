@@ -8,7 +8,7 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/maxmellon/onion"
-	"github.com/maxmellon/onion/printer"
+	"github.com/maxmellon/onion/formatter"
 )
 
 var style string
@@ -43,9 +43,9 @@ func main() {
 			parsedData := onion.Parse(data)
 			lintedData := onion.Linting(parsedData)
 			if style == "simple" || style == "s" {
-				printer.SimplePrintResult(filename, lintedData)
+				formatter.SimplePrintResult(filename, lintedData)
 			} else if style == "errorformats" || style == "e" {
-				printer.QuickFixPrintResult(filename, lintedData)
+				formatter.QuickFixPrintResult(filename, lintedData)
 			} else {
 				styleOptParseError()
 			}
