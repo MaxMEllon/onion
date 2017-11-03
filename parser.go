@@ -1,8 +1,9 @@
 package onion
 
 import (
-	"github.com/maxmellon/onion/types"
 	"regexp"
+
+	"github.com/maxmellon/onion/types"
 )
 
 func match(reg, str string) bool {

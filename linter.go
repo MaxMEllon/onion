@@ -13,6 +13,11 @@ func Linting(tml []types.Tml) []types.Status {
 			result = append(result, r)
 		}
 
+		r = rules.AmbiWidthSpace(v)
+		if r.Code != types.S {
+			result = append(result, r)
+		}
+
 		r = rules.LessThan75Characters(v)
 		if r.Code != types.S {
 			result = append(result, r)

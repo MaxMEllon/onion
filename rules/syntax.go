@@ -1,6 +1,8 @@
 package rules
 
 import (
+	"regexp"
+
 	"github.com/maxmellon/onion/types"
 )
 
@@ -9,7 +11,7 @@ func PunctuationMark(m types.Tml) types.Status {
 		return types.Status{Code: types.S}
 	}
 	for i, v := range m.Statement {
-		if v == '．' || v == '，' || v == '.' || v == ',' {
+		if v == '．' || v == '，' {
 			return types.Status{
 				Line:     m.Line,
 				Column:   i + 1,
@@ -20,6 +22,21 @@ func PunctuationMark(m types.Tml) types.Status {
 		}
 	}
 	return types.Status{Code: types.S}
+}
+
+func AmbiWidthSpace(m types.Tml) types.Status {
+	reg := regexp.MustCompile("　")
+	loc := reg.FindStringIndex(m.Statement)
+	if loc == nil {
+		return types.Status{Code: types.S}
+	}
+	return types.Status{
+		Line:     m.Line,
+		Column:   loc[1],
+		Message:  "全角スペースを使うべきではない",
+		RuleName: "AmbiWidthSpace",
+		Code:     types.C,
+	}
 }
 
 const MAX_LENGTH_OF_LINE = 75
