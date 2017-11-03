@@ -31,6 +31,8 @@ func Parse(data []string) []types.Tml {
 			result = append(result, generate(i, "LIST_ITEM", l))
 		} else if match(`^\n|^\r`, l) {
 			result = append(result, generate(i, "EMPTY", l))
+		} else if match(`^\s+○`, l) || match(`^\s+●`, l) || match(`^\s+◎`, l) {
+			result = append(result, generate(i, "ERROR", l))
 		} else {
 			result = append(result, generate(i, "PLANE_TEXT", l))
 		}

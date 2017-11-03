@@ -8,7 +8,17 @@ import (
 func Linting(tml []types.Tml) []types.Status {
 	var result []types.Status
 	for _, v := range tml {
-		r := rules.PunctuationMark(v)
+		r := rules.ParseError(v)
+		if r.Code != types.S {
+			result = append(result, r)
+		}
+
+		r = rules.PunctuationMark(v)
+		if r.Code != types.S {
+			result = append(result, r)
+		}
+
+		r = rules.VariantCircleCharacter(v)
 		if r.Code != types.S {
 			result = append(result, r)
 		}
@@ -18,12 +28,12 @@ func Linting(tml []types.Tml) []types.Status {
 			result = append(result, r)
 		}
 
-		r = rules.LessThan75Characters(v)
+		r = rules.LineLength(v)
 		if r.Code != types.S {
 			result = append(result, r)
 		}
 
-		r = rules.LabelStyle(v)
+		r = rules.LabelType(v)
 		if r.Code != types.S {
 			result = append(result, r)
 		}

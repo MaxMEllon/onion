@@ -11,16 +11,22 @@ import (
 	"github.com/maxmellon/onion/formatter"
 )
 
-var style string
+var (
+	style   string
+	version bool
+)
+
+const VERSION = `0.1.0`
 
 func init() {
-	flag.StringVar(&style, "style", "simple", "Choose an output formatter.")
+	flag.StringVar(&style, "f", "simple", "Choose an output formatter.")
+	flag.BoolVar(&version, "v", false, "version")
 }
 
 var Usage = func() {
 	fmt.Fprintf(os.Stderr, "Usage of %s [options] [file1, file2, ...]", os.Args[0])
 	fmt.Fprintf(os.Stderr, `
-	--style, -style [FORMATTER]		choose a formatter.
+	-f=FORMATTER]		choose a formatter.
 		[s]imple (default)
 		[e]rrorformats (vim errorformats style)
 `)
@@ -35,6 +41,11 @@ func main() {
 		Usage()
 	}
 
+	if version == true {
+		fmt.Println(VERSION)
+		os.Exit(0)
+	}
+
 	var wg sync.WaitGroup
 	for _, filename := range flag.Args() {
 		wg.Add(1)
@@ -47,7 +58,7 @@ func main() {
 			} else if style == "errorformats" || style == "e" {
 				formatter.QuickFixPrintResult(filename, lintedData)
 			} else {
-				styleOptParseError()
+				failParseFormatterOpt()
 			}
 			defer wg.Done()
 		}(filename)
@@ -57,7 +68,7 @@ func main() {
 	return
 }
 
-func styleOptParseError() {
+func failParseFormatterOpt() {
 	r := color.New(color.FgRed, color.Bold)
 	r.Fprintf(os.Stderr, "Unexpected format")
 	y := color.New(color.FgYellow, color.Bold)

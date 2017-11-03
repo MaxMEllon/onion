@@ -18,7 +18,7 @@ func contains(s []string, t string) bool {
 	return false
 }
 
-func LabelStyle(m types.Tml) types.Status {
+func LabelType(m types.Tml) types.Status {
 	if m.Category != "LIST_ITEM" {
 		return types.Status{Code: types.S}
 	}
@@ -31,7 +31,7 @@ func LabelStyle(m types.Tml) types.Status {
 				Line:     m.Line,
 				Column:   3,
 				Message:  "[新規], [継続], [完了] のいずれかであるべき",
-				RuleName: "LabelStyle",
+				RuleName: "Label/Type",
 				Code:     types.C,
 			}
 		}

@@ -22,6 +22,20 @@ set makeprg=onion\ %
 set errorformat=%f\|%l\ col\ %c\|\ %m
 ```
 
+TODO
+---
+
+- lint
+  - [x] `[新規], [継続], [完了]`
+  - [x] `__◎ タイトル`
+  - [x] `less than 75 character`
+  - [x] `dont use ambi width space char`
+  - [x] `dont use ◯ , should use ○`
+  - [ ] `○____タイトル`
+  - [ ] `2000.00.00(__)`
+
+- autofix
+
 LICENSE
 ---
 
