@@ -1,4 +1,4 @@
-MAIN=./onion/cmd/main.go
+MAIN=./cmd/onion/main.go
 
 build:
 	-go build $(MAIN)
