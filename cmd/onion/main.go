@@ -50,6 +50,7 @@ func main() {
 	for _, filename := range flag.Args() {
 		wg.Add(1)
 		go func(filename string) {
+			defer wg.Done()
 			data := onion.ReadFile(filename)
 			parsedData := onion.Parse(data)
 			lintedData := onion.Linting(parsedData)
@@ -60,7 +61,6 @@ func main() {
 			} else {
 				failParseFormatterOpt()
 			}
-			defer wg.Done()
 		}(filename)
 	}
 
