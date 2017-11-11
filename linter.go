@@ -1,11 +1,12 @@
 package onion
 
 import (
-	"github.com/maxmellon/onion/rules"
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/rules"
+	"github.com/TomiLabo/onion/types"
+	"github.com/TomiLabo/tmngparser/ast"
 )
 
-func Linting(tml []types.Tml) []types.Status {
+func Linting(tml []ast.Tml) []types.Status {
 	var result []types.Status
 	for _, v := range tml {
 		r := rules.ParseError(v)

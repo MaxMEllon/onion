@@ -3,8 +3,8 @@ package formatter
 import (
 	"fmt"
 
+	"github.com/TomiLabo/onion/types"
 	"github.com/fatih/color"
-	"github.com/maxmellon/onion/types"
 )
 
 func SimplePrintResult(filename string, r []types.Status) {

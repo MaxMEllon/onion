@@ -3,10 +3,11 @@ package rules
 import (
 	"regexp"
 
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/types"
+	"github.com/TomiLabo/tmngparser/ast"
 )
 
-func PunctuationMark(m types.Tml) types.Status {
+func PunctuationMark(m ast.Tml) types.Status {
 	if m.Category != "PLANE_TEXT" {
 		return types.Status{Code: types.S}
 	}
@@ -24,7 +25,7 @@ func PunctuationMark(m types.Tml) types.Status {
 	return types.Status{Code: types.S}
 }
 
-func VariantCircleCharacter(m types.Tml) types.Status {
+func VariantCircleCharacter(m ast.Tml) types.Status {
 	reg := regexp.MustCompile("◯")
 	loc := reg.FindStringIndex(m.Statement)
 	if loc == nil {
@@ -39,7 +40,7 @@ func VariantCircleCharacter(m types.Tml) types.Status {
 	}
 }
 
-func AmbiWidthSpace(m types.Tml) types.Status {
+func AmbiWidthSpace(m ast.Tml) types.Status {
 	reg := regexp.MustCompile("　")
 	loc := reg.FindStringIndex(m.Statement)
 	if loc == nil {

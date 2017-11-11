@@ -4,11 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"sync"
 
+	"github.com/TomiLabo/onion"
+	"github.com/TomiLabo/onion/formatter"
+	"github.com/TomiLabo/tmngparser"
 	"github.com/fatih/color"
-	"github.com/maxmellon/onion"
-	"github.com/maxmellon/onion/formatter"
 )
 
 var (
@@ -46,25 +46,19 @@ func main() {
 		os.Exit(0)
 	}
 
-	var wg sync.WaitGroup
 	for _, filename := range flag.Args() {
-		wg.Add(1)
-		go func(filename string) {
-			defer wg.Done()
-			data := onion.ReadFile(filename)
-			parsedData := onion.Parse(data)
-			lintedData := onion.Linting(parsedData)
-			if style == "simple" || style == "s" {
-				formatter.SimplePrintResult(filename, lintedData)
-			} else if style == "errorformats" || style == "e" {
-				formatter.QuickFixPrintResult(filename, lintedData)
-			} else {
-				failParseFormatterOpt()
-			}
-		}(filename)
+		data := parser.ReadFile(filename)
+		parsedData := parser.Parse(data)
+		lintedData := onion.Linting(parsedData)
+		if style == "simple" || style == "s" {
+			formatter.SimplePrintResult(filename, lintedData)
+		} else if style == "errorformats" || style == "e" {
+			formatter.QuickFixPrintResult(filename, lintedData)
+		} else {
+			failParseFormatterOpt()
+		}
 	}
 
-	wg.Wait()
 	return
 }
 

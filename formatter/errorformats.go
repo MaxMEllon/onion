@@ -3,7 +3,7 @@ package formatter
 import (
 	"fmt"
 
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/types"
 )
 
 func QuickFixPrintResult(filename string, r []types.Status) {

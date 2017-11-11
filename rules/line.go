@@ -1,12 +1,13 @@
 package rules
 
 import (
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/types"
+	"github.com/TomiLabo/tmngparser/ast"
 )
 
 const MAX_LENGTH_OF_LINE = 75
 
-func LineLength(m types.Tml) types.Status {
+func LineLength(m ast.Tml) types.Status {
 	for i, _ := range m.Statement {
 		if i >= MAX_LENGTH_OF_LINE {
 			return types.Status{

@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/TomiLabo/tmngparser"
+  packages = [".","ast","category"]
+  revision = "2f8a3945d9ba45cdae5e1899b63ab23bd216c4df"
+  version = "v0.1.1"
+
+[[projects]]
   name = "github.com/fatih/color"
   packages = ["."]
   revision = "570b54cabe6b8eb0bc2dfce68d964677d63b5260"
@@ -20,14 +26,20 @@
   version = "v0.0.3"
 
 [[projects]]
+  name = "github.com/mattn/go-runewidth"
+  packages = ["."]
+  revision = "9e777a8366cce605130a531d2cd6363d07ad7317"
+  version = "v0.0.2"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "4fe5d7925040acd225bf9c7cee65e82d07f06bff"
+  revision = "1e2299c37cc91a509f1b12369872d27be0ce98a6"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "801a26ab69076db10a9cdea5b1fe83b567e63bc4754b1c857a5cd094a89e6fab"
+  inputs-digest = "04031dd36f49681a3774c91ef18061eb65852ef8593fc693b37570196f470fd6"
   solver-name = "gps-cdcl"
   solver-version = 1

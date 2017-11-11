@@ -3,7 +3,8 @@ package rules
 import (
 	"regexp"
 
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/types"
+	"github.com/TomiLabo/tmngparser/ast"
 )
 
 var labels = []string{"新規", "継続", "完了"}
@@ -18,7 +19,7 @@ func contains(s []string, t string) bool {
 	return false
 }
 
-func LabelType(m types.Tml) types.Status {
+func LabelType(m ast.Tml) types.Status {
 	if m.Category != "LIST_ITEM" {
 		return types.Status{Code: types.S}
 	}

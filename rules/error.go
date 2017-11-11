@@ -1,10 +1,11 @@
 package rules
 
 import (
-	"github.com/maxmellon/onion/types"
+	"github.com/TomiLabo/onion/types"
+	"github.com/TomiLabo/tmngparser/ast"
 )
 
-func ParseError(m types.Tml) types.Status {
+func ParseError(m ast.Tml) types.Status {
 	if m.Category == "ERROR" {
 		return types.Status{
 			Line:     m.Line,
