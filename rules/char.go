@@ -5,10 +5,11 @@ import (
 
 	"github.com/TomiLabo/onion/types"
 	"github.com/TomiLabo/tmngparser/ast"
+	"github.com/TomiLabo/tmngparser/token"
 )
 
 func PunctuationMark(m ast.Tml) types.Status {
-	if m.Category != "PLANE_TEXT" {
+	if m.Token != token.PlaneText {
 		return types.Status{Code: types.S}
 	}
 	for i, v := range m.Statement {

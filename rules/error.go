@@ -3,10 +3,11 @@ package rules
 import (
 	"github.com/TomiLabo/onion/types"
 	"github.com/TomiLabo/tmngparser/ast"
+	"github.com/TomiLabo/tmngparser/token"
 )
 
 func ParseError(m ast.Tml) types.Status {
-	if m.Category == "ERROR" {
+	if m.Token == token.Error {
 		return types.Status{
 			Line:     m.Line,
 			Column:   1,

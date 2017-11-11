@@ -3,9 +3,9 @@
 
 [[projects]]
   name = "github.com/TomiLabo/tmngparser"
-  packages = [".","ast","category"]
-  revision = "2f8a3945d9ba45cdae5e1899b63ab23bd216c4df"
-  version = "v0.1.1"
+  packages = [".","ast","token"]
+  revision = "c2a1b1056341b3ed5a245f2fe3ec8cb612476d73"
+  version = "v0.1.2"
 
 [[projects]]
   name = "github.com/fatih/color"
@@ -40,6 +40,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "04031dd36f49681a3774c91ef18061eb65852ef8593fc693b37570196f470fd6"
+  inputs-digest = "48cebd0441405dde5afcb4d44dc6ec33c83cdd5bf48f926ae0129b4d684daaa2"
   solver-name = "gps-cdcl"
   solver-version = 1

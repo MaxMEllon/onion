@@ -5,6 +5,7 @@ import (
 
 	"github.com/TomiLabo/onion/types"
 	"github.com/TomiLabo/tmngparser/ast"
+	"github.com/TomiLabo/tmngparser/token"
 )
 
 var labels = []string{"新規", "継続", "完了"}
@@ -20,7 +21,7 @@ func contains(s []string, t string) bool {
 }
 
 func LabelType(m ast.Tml) types.Status {
-	if m.Category != "LIST_ITEM" {
+	if m.Token != token.ListItem {
 		return types.Status{Code: types.S}
 	}
 
