@@ -11,7 +11,7 @@ func LineLength(m ast.Tml) types.Status {
 	if m.End >= MAX_LENGTH_OF_LINE {
 		return types.Status{
 			Line:     m.Line,
-			Column:   m.End,
+			Column:   len([]byte(m.Statement)),
 			Message:  "1行は75文字以内にするべき",
 			RuleName: "Line/Length",
 			Code:     types.W,
