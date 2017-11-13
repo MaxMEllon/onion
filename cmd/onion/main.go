@@ -19,7 +19,7 @@ var (
 	fix     bool
 )
 
-const VERSION = `0.1.0`
+const VERSION = `0.2.0`
 
 func init() {
 	flag.StringVar(&style, "f", "simple", "Choose an output formatter.")
