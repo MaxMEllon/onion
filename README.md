@@ -20,6 +20,12 @@ USAGE
 $ onion *.tmng
 ```
 
+**Please execute with `--fix` option, if you want to auto fix to document file**
+
+```
+$ onion *.tmng --fix  # auto fix!!
+```
+
 #### Vim
 
 ```vim
