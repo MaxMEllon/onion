@@ -6,38 +6,33 @@ import (
 	"github.com/TomiLabo/tmngparser/ast"
 )
 
+func appendResult(results []types.Status, r types.Status) []types.Status {
+	if r.Code != types.S {
+		results = append(results, r)
+	}
+	return results
+}
+
 func Linting(tml []ast.Tml) []types.Status {
 	var result []types.Status
 	for _, v := range tml {
 		r := rules.ParseError(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 
 		r = rules.PunctuationMark(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 
 		r = rules.VariantCircleCharacter(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 
 		r = rules.AmbiWidthSpace(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 
 		r = rules.LineLength(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 
 		r = rules.LabelType(v)
-		if r.Code != types.S {
-			result = append(result, r)
-		}
+		result = appendResult(result, r)
 	}
 	return result
 }
