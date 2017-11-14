@@ -8,10 +8,10 @@ import (
 )
 
 func TrailingSpace(node ast.Tml) ast.Tml {
-	exp1 := regexp.MustCompile(`^[\t\ ]+`)
+	exp1 := regexp.MustCompile(`[\t\ ]+$`)
 	statement := exp1.ReplaceAllLiteralString(node.Statement, "")
 	if node.Token != token.PlaneText {
-		exp2 := regexp.MustCompile(`[\t\ ]+$`)
+		exp2 := regexp.MustCompile(`^[\t\ ]+`)
 		statement = exp2.ReplaceAllLiteralString(statement, "")
 	}
 	return ast.New(
